@@ -1,0 +1,53 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import Footer from "@/components/Footer";
+import Script from "next/script";
+
+import Navbar from "@/components/Navbar";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "WS AMIN STORE",
+  description: "Top Up Game Murah, Cepat & Aman",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="id"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+    >
+      <body className="min-h-screen bg-slate-950 text-white flex flex-col">
+
+  <Navbar />
+
+  <main className="flex-1">
+    {children}
+  </main>
+
+  <Footer />
+
+<Script
+  src="https://app.sandbox.midtrans.com/snap/snap.js"
+  data-client-key={process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY}
+  strategy="beforeInteractive"
+/>
+
+</body>
+    </html>
+  );
+}
