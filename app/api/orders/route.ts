@@ -37,7 +37,8 @@ export async function POST(req: Request) {
 
     });
 
-
+    console.log("ORDER BERHASIL DISIMPAN:", order);
+    
     return NextResponse.json(order);
 
 
