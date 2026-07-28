@@ -53,15 +53,6 @@ export default async function AdminOrders({
 
 });
 
-console.log("TOTAL ORDER:", orders.length);
-
-console.log(
-  orders.map((o) => ({
-    orderId: o.orderId,
-    status: o.status,
-  }))
-);
-
   return (
 
     <main className="
@@ -136,156 +127,142 @@ console.log(
           ">
 
 
-            {orders.map((order)=>(
+            {orders.map((order) => (
 
+  <div
+    key={order.id}
+    className="
+      bg-slate-800
+      rounded-3xl
+      p-6
+    "
+  >
 
-              <Link
-  href={`/admin/orders/${order.orderId}`}
-  key={order.id}
-  className="
-    block
-    bg-slate-800
-    rounded-3xl
-    p-6
-    hover:bg-slate-700
-    transition
-  "
->
+    <Link
+      href={`/admin/orders/${order.orderId}`}
+      className="
+        block
+        hover:bg-slate-700
+        rounded-2xl
+        transition
+      "
+    >
 
-              
+      <div
+        className="
+          flex
+          justify-between
+          items-start
+          gap-5
+        "
+      >
 
+        <div
+          className="
+            flex
+            gap-4
+          "
+        >
 
+          <GameLogo
+            game={order.game}
+          />
 
-                <div className="
-                  flex
-                  justify-between
-                  items-start
-                  gap-5
-                ">
+          <div>
 
+            <h2
+              className="
+                text-xl
+                font-bold
+              "
+            >
+              {order.game}
+            </h2>
 
-                  <div className="
-                    flex
-                    gap-4
-                  ">
+            <p
+              className="
+                text-gray-400
+              "
+            >
+              {order.orderId}
+            </p>
 
+          </div>
 
-                    <GameLogo
-                      game={order.game}
-                    />
+        </div>
 
+        <StatusBadge
+          status={order.status}
+        />
 
+      </div>
 
-                    <div>
+      <div
+        className="
+          mt-6
+          bg-slate-700
+          rounded-2xl
+          p-4
+          space-y-2
+        "
+      >
 
+        <p>
+          User ID:
+          <b className="ml-2">
+            {order.userId}
+          </b>
+        </p>
 
-                      <h2 className="
-                        text-xl
-                        font-bold
-                      ">
-                        {order.game}
-                      </h2>
+        {order.extraId && (
 
+          <p>
 
-                      <p className="
-                        text-gray-400
-                      ">
-                        {order.orderId}
-                      </p>
+            {order.game === "Valorant"
+              ? "Tagline:"
+              : "Server ID:"}
 
+            <b className="ml-2">
+              {order.extraId}
+            </b>
 
-                    </div>
+          </p>
 
+        )}
 
-                  </div>
+        <p>
+          Item:
+          <b className="ml-2">
+            {order.item}
+          </b>
+        </p>
 
+        <p>
+          Total:
+          <b className="ml-2">
+            Rp {order.price.toLocaleString("id-ID")}
+          </b>
+        </p>
 
+        <p>
+          Pembayaran:
+          <b className="ml-2">
+            {order.payment}
+          </b>
+        </p>
 
+      </div>
 
-                  <StatusBadge
-                    status={order.status}
-                  />
+    </Link>
 
+    <StatusButton
+      orderId={order.orderId}
+    />
 
+  </div>
 
-                </div>
+))}
 
-
-
-
-                <div className="
-                  mt-6
-                  bg-slate-700
-                  rounded-2xl
-                  p-4
-                  space-y-2
-                ">
-
-
-                  <p>
-                    User ID:
-                    <b className="ml-2">
-                      {order.userId}
-                    </b>
-                  </p>
-
-
-                  {order.extraId && (
-
-                    <p>
-
-                      {order.game === "Valorant"
-                        ? "Tagline:"
-                        : "Server ID:"}
-
-                      <b className="ml-2">
-                        {order.extraId}
-                      </b>
-
-                    </p>
-
-                  )}
-
-
-
-                  <p>
-                    Item:
-                    <b className="ml-2">
-                      {order.item}
-                    </b>
-                  </p>
-
-
-
-                  <p>
-                    Total:
-                    <b className="ml-2">
-                      Rp {order.price.toLocaleString("id-ID")}
-                    </b>
-                  </p>
-
-
-
-                  <p>
-                    Pembayaran:
-                    <b className="ml-2">
-                      {order.payment}
-                    </b>
-                  </p>
-
-
-                </div>
-
-
-
-
-                {/* <StatusButton orderId={order.orderId} /> */}
-
-
-              </Link>
-
-
-            ))}
 
 
           </div>
