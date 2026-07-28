@@ -2,6 +2,7 @@ import InvoiceAction from "./InvoiceAction";
 import { prisma } from "@/lib/prisma";
 import StatusBadge from "@/components/StatusBadge";
 import GameLogo from "@/components/GameLogo";
+import { checkVipStatus } from "@/lib/vipstatus";
 
 
 export default async function Invoice({
@@ -48,6 +49,53 @@ export default async function Invoice({
 
   });
 
+  // =====================
+// UPDATE STATUS VIP
+// =====================
+
+if (order?.vipTrxId) {
+
+  try {
+
+    const vip = await checkVipStatus(
+      order.vipTrxId
+    );
+
+    if (vip.result && vip.data.length > 0) {
+
+      const latest = vip.data[0];
+
+      await prisma.order.update({
+
+        where: {
+          orderId: order.orderId,
+        },
+
+        data: {
+
+          vipStatus: latest.status,
+
+          note: latest.note ?? null,
+
+        },
+
+      });
+
+      order.vipStatus = latest.status;
+      order.note = latest.note ?? null;
+
+    }
+
+  } catch (err) {
+
+    console.error(
+      "CHECK VIP ERROR:",
+      err
+    );
+
+  }
+
+}
 
 
 

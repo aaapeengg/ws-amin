@@ -100,11 +100,10 @@ export async function POST(req: Request) {
     // ==========================
 
     if (
-
-      transactionStatus === "settlement" &&
-      order.productCode
-
-    ) {
+  transactionStatus === "settlement" &&
+  order.productCode &&
+  !order.vipTrxId
+) {
 
       const vip = await createVipOrder({
 
