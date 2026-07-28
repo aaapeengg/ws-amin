@@ -53,7 +53,14 @@ export default async function AdminOrders({
 
 });
 
+console.log("TOTAL ORDER:", orders.length);
 
+console.log(
+  orders.map((o) => ({
+    orderId: o.orderId,
+    status: o.status,
+  }))
+);
 
   return (
 
