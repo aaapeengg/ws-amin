@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import SearchBox from "./components/SearchBox";
 import { prisma } from "@/lib/prisma";
 import StatusButton from "./StatusButton";
