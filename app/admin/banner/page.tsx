@@ -1,3 +1,4 @@
+import DeleteBannerButton from "@/components/admin/DeleteBannerButton";
 import BannerForm from "@/components/admin/BannerForm";
 import { prisma } from "@/lib/prisma";
 
@@ -43,6 +44,10 @@ export default async function BannerAdmin() {
                 <p className="text-gray-400 mt-2">
                   {banner.image}
                 </p>
+
+<DeleteBannerButton
+  id={banner.id}
+/>
 
               </div>
 
