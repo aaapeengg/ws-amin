@@ -269,6 +269,31 @@ console.log("HASIL API:", data);
 
 </div>
 
+{nickname && (
+
+  <div
+    className="
+      mt-4
+      bg-green-500/20
+      border
+      border-green-500
+      rounded-xl
+      p-4
+    "
+  >
+
+    <p className="text-green-400 font-semibold">
+      ✓ Nickname ditemukan
+    </p>
+
+    <p className="text-xl font-bold mt-2">
+      {nickname}
+    </p>
+
+  </div>
+
+)}
+
 
       </div>
 
