@@ -1,9 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { games } from "@/data/games";
+import { prisma } from "@/lib/prisma";
 
 
-export default function GameSection() {
+export default async function GameSection() {
+
+const games = await prisma.game.findMany({
+  orderBy: {
+    name: "asc",
+  },
+});
 
   return (
 

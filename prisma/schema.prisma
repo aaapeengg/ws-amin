@@ -8,46 +8,48 @@ datasource db {
 }
 
 model Order {
-
-  id Int @id @default(autoincrement())
-
-  orderId String @unique
-
-  game String
-  userId String
-  extraId String?
-
-  item String
-  price Int
-
-  payment String
-
-  productCode String?
-
-  status String @default("PENDING")
-
-  transactionStatus String @default("PENDING")
-
-  vipTrxId String?
-
-  vipStatus String?
-
-  note String?
-
-  createdAt DateTime @default(now())
-
+  id                Int      @id @default(autoincrement())
+  orderId           String   @unique
+  game              String
+  userId            String
+  extraId           String?
+  item              String
+  price             Int
+  payment           String
+  productCode       String?
+  status            String   @default("PENDING")
+  transactionStatus String   @default("PENDING")
+  vipTrxId          String?
+  vipStatus         String?
+  note              String?
+  createdAt         DateTime @default(now())
 }
 
 model Banner {
-
   id        String   @id @default(cuid())
-
   title     String
-
   image     String
-
   isActive  Boolean  @default(true)
-
   createdAt DateTime @default(now())
+}
 
+model Game {
+  id           String     @id @default(cuid())
+  name         String
+  slug         String     @unique
+  image        String
+  currency     String
+  inputType    String
+  nicknameCode String?
+  createdAt    DateTime   @default(now())
+  items        GameItem[]
+}
+
+model GameItem {
+  id          String @id @default(cuid())
+  gameId      String
+  amount      String
+  price       Int
+  productCode String
+  game        Game   @relation(fields: [gameId], references: [id], onDelete: Cascade)
 }

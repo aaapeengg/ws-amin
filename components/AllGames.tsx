@@ -1,8 +1,14 @@
 import Link from "next/link";
 
-import { games } from "@/data/games";;
+import { prisma } from "@/lib/prisma";;
 
-export default function AllGames() {
+export default async function AllGames() {
+const games = await prisma.game.findMany({
+  orderBy: {
+    name: "asc",
+  },
+});
+
   return (
     <section className="max-w-7xl mx-auto px-6 py-16">
 

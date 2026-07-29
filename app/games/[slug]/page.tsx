@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { games } from "@/data/games";
+import { prisma } from "@/lib/prisma";
 import TopUpForm from "@/components/TopUpForm";
 
 
@@ -15,9 +15,17 @@ export default async function GameDetail({
   const { slug } = await params;
 
 
-  const game = games.find(
-    (item) => item.slug === slug
-  );
+  const game = await prisma.game.findUnique({
+
+  where: {
+    slug,
+  },
+
+  include: {
+    items: true,
+  },
+
+});
 
 
   if (!game) {
