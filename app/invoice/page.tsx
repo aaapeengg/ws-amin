@@ -1,3 +1,4 @@
+import InvoiceStatusChecker from "@/components/InvoiceStatusChecker";
 import InvoiceAction from "./InvoiceAction";
 import { prisma } from "@/lib/prisma";
 import StatusBadge from "@/components/StatusBadge";
@@ -359,10 +360,13 @@ if (order?.vipTrxId) {
   orderId={order.orderId}
 />
 
-      </div>
+<InvoiceStatusChecker
+  orderId={order.orderId}
+/>
 
+</div>
 
-    </main>
+</main>
 
   );
 

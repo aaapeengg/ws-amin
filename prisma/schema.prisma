@@ -37,3 +37,17 @@ model Order {
   createdAt DateTime @default(now())
 
 }
+
+model Banner {
+
+  id        String   @id @default(cuid())
+
+  title     String
+
+  image     String
+
+  isActive  Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+
+}
