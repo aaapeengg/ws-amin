@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function TopUpForm({ game }: any) {
 
@@ -82,6 +82,27 @@ console.log("HASIL API:", data);
   }
 
 } 
+
+useEffect(() => {
+
+  setChecked(false);
+  setNickname("");
+
+  if (!userId) return;
+
+  if (game.inputType === "ml" && !extraId) return;
+
+  if (game.inputType === "riot" && !extraId) return;
+
+  const timer = setTimeout(() => {
+
+    handleCheckNickname();
+
+  }, 800);
+
+  return () => clearTimeout(timer);
+
+}, [userId, extraId]);
 
 
   return (
