@@ -1,3 +1,4 @@
+import BannerForm from "@/components/admin/BannerForm";
 import { prisma } from "@/lib/prisma";
 
 export default async function BannerAdmin() {
@@ -17,6 +18,8 @@ export default async function BannerAdmin() {
         <h1 className="text-4xl font-bold mb-8">
           Kelola Banner
         </h1>
+
+<BannerForm />
 
         <div className="space-y-4">
 
