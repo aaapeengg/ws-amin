@@ -37,7 +37,7 @@ export default function BannerForm() {
       setTitle("");
       setImage("");
 
-      router.refresh();
+      window.location.reload();
 
     }
 

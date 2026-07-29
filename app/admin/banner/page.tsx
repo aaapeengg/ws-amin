@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import DeleteBannerButton from "@/components/admin/DeleteBannerButton";
 import BannerForm from "@/components/admin/BannerForm";
 import { prisma } from "@/lib/prisma";
