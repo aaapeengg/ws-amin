@@ -270,23 +270,6 @@ useEffect(() => {
 
       <div className="mt-5">
 
-  <button
-  type="button"
-  onClick={handleCheckNickname}
-  disabled={checking}
-  className="
-    mt-3
-    bg-blue-600
-    hover:bg-blue-700
-    disabled:bg-gray-600
-    px-5
-    py-3
-    rounded-xl
-    font-bold
-  "
->
-  {checking ? "Mengecek..." : "Cek Nickname"}
-</button>
 
 </div>
 
