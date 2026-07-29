@@ -6,17 +6,80 @@ export default function TopUpForm({ game }: any) {
 
   const [selectedItem, setSelectedItem] = useState<any>(null);
 
-  const [userId, setUserId] = useState("");
-  const [extraId, setExtraId] = useState("");
+const [userId, setUserId] = useState("");
+const [extraId, setExtraId] = useState("");
+
+const [nickname, setNickname] = useState("");
+const [checking, setChecking] = useState(false);
+const [checked, setChecked] = useState(false);
 
 
   const canContinue =
-    selectedItem &&
-    userId &&
-    (
-      game.inputType === "user" ||
-      extraId
-    );
+  selectedItem &&
+  userId &&
+  (
+    game.inputType === "user" ||
+    extraId
+  ) &&
+  checked;
+
+async function handleCheckNickname() {
+
+  try {
+
+    setChecking(true);
+
+    setChecked(false);
+
+    setNickname("");
+
+    const res = await fetch("/api/check-nickname", {
+
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+
+        code: game.nicknameCode,
+
+        target: userId,
+
+        additionalTarget: extraId || undefined,
+
+      }),
+
+    });
+
+    const data = await res.json();
+
+    if (data.result) {
+
+      setNickname(data.data);
+
+      setChecked(true);
+
+    } else {
+
+      alert(data.message);
+
+    }
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert("Gagal mengecek nickname.");
+
+  } finally {
+
+    setChecking(false);
+
+  }
+
+} 
 
 
   return (
@@ -181,6 +244,28 @@ export default function TopUpForm({ game }: any) {
           </>
 
         )}
+
+      <div className="mt-5">
+
+  <button
+  type="button"
+  onClick={handleCheckNickname}
+  disabled={checking}
+  className="
+    mt-3
+    bg-blue-600
+    hover:bg-blue-700
+    disabled:bg-gray-600
+    px-5
+    py-3
+    rounded-xl
+    font-bold
+  "
+>
+  {checking ? "Mengecek..." : "Cek Nickname"}
+</button>
+
+</div>
 
 
       </div>

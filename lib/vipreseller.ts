@@ -108,3 +108,46 @@ export async function createVipOrder({
   }
 
 }
+
+export async function checkNickname({
+  code,
+  target,
+  additionalTarget,
+}: {
+  code: string;
+  target: string;
+  additionalTarget?: string;
+}) {
+
+  const apiId = process.env.VIP_ID;
+  const apiKey = process.env.VIP_KEY;
+
+  if (!apiId || !apiKey) {
+    throw new Error("VIP_ID atau VIP_KEY belum diisi.");
+  }
+
+  const sign = crypto
+    .createHash("md5")
+    .update(apiId + apiKey)
+    .digest("hex");
+
+  const formData = new URLSearchParams();
+
+  formData.append("key", apiKey);
+  formData.append("sign", sign);
+  formData.append("type", "get-nickname");
+  formData.append("code", code);
+  formData.append("target", target);
+
+  if (additionalTarget) {
+    formData.append("additional_target", additionalTarget);
+  }
+
+  const res = await fetch(VIP_URL, {
+    method: "POST",
+    body: formData,
+  });
+
+  return await res.json();
+
+}

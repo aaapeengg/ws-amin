@@ -5,6 +5,7 @@ export const games = [
     image: "/games/ml.jpg",
     currency: "Diamond",
     inputType: "ml",
+    nicknameCode: "mobile-legends",
 
     items: [
       {
@@ -32,6 +33,7 @@ export const games = [
     image: "/games/ff.jpg",
     currency: "Diamond",
     inputType: "user",
+    nicknameCode: "free-fire",
 
     items: [
       {
@@ -54,6 +56,7 @@ export const games = [
     image: "/games/pubg.jpg",
     currency: "UC",
     inputType: "user",
+    nicknameCode: "pubgm",
 
     items: [
       {
@@ -76,6 +79,7 @@ export const games = [
     image: "/games/valorant.jpg",
     currency: "VP",
     inputType: "riot",
+    nicknameCode: "valorant",
 
     items: [
       {
