@@ -36,21 +36,33 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
+  try {
+    const body = await req.json();
 
-  const body = await req.json();
+    console.log("DELETE ID:", body.id);
 
-  await prisma.banner.delete({
+    const deleted = await prisma.banner.deleteMany({
+      where: {
+        id: body.id,
+      },
+    });
 
-    where: {
-      id: body.id,
-    },
+    console.log("DELETE RESULT:", deleted);
 
-  });
+    return NextResponse.json({
+      success: true,
+    });
 
-  return NextResponse.json({
+  } catch (error) {
+    console.error("DELETE ERROR:", error);
 
-    success: true,
-
-  });
-
+    return NextResponse.json(
+      {
+        success: false,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 }
