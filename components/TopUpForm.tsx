@@ -55,7 +55,7 @@ async function handleCheckNickname() {
 
     const data = await res.json();
 
-console.log(data);
+console.log("HASIL API:", data);
 
     if (data.result) {
 
