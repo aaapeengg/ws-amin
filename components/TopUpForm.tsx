@@ -55,6 +55,8 @@ async function handleCheckNickname() {
 
     const data = await res.json();
 
+console.log(data);
+
     if (data.result) {
 
       setNickname(data.data);
