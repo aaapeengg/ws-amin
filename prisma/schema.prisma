@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum GameStatus {
+  ACTIVE
+  MAINTENANCE
+  COMING_SOON
+}
+
 model Order {
   id                Int      @id @default(autoincrement())
   orderId           String   @unique
@@ -41,6 +47,7 @@ model Game {
   currency     String
   inputType    String
   nicknameCode String?
+  status GameStatus @default(ACTIVE)
   createdAt    DateTime   @default(now())
   items        GameItem[]
 }

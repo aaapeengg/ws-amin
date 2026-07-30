@@ -1,16 +1,10 @@
-import DeleteGameButton from "@/components/admin/DeleteGameButton";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import AdminHeader from "@/components/admin/ui/AdminHeader";
 import AdminStatCard from "@/components/admin/ui/AdminStatCard";
-import AdminCard from "@/components/admin/ui/AdminCard";
-import Image from "next/image";
+import GameTable from "@/components/admin/GameTable";
 
-import {
-  Gamepad2,
-  Plus,
-  Pencil,
-} from "lucide-react";
+import { Plus } from "lucide-react";
 
 export default async function AdminGames() {
 
@@ -113,67 +107,7 @@ export default async function AdminGames() {
 
 </div>
 
-        <div className="space-y-5">
-
-  {games.map((game) => (
-
-    <AdminCard key={game.id}>
-
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-
-        <div className="flex items-center gap-5">
-
-          <Image
-            src={game.image}
-            alt={game.name}
-            width={72}
-            height={72}
-            className="rounded-2xl object-cover border border-[var(--border)]"
-          />
-
-          <div>
-
-            <h2 className="font-space text-2xl font-bold">
-              {game.name}
-            </h2>
-
-            <p className="text-[var(--muted)] mt-1">
-              {game.slug}
-            </p>
-
-          </div>
-
-        </div>
-
-        <div className="flex gap-3">
-
-          <Link
-            href={`/admin/games/${game.id}`}
-            className="
-              rounded-2xl
-              border
-              border-[var(--border)]
-              px-5
-              py-2.5
-              hover:border-[var(--primary)]
-              hover:text-[var(--primary)]
-              transition
-            "
-          >
-            Edit
-          </Link>
-
-          <DeleteGameButton id={game.id} />
-
-        </div>
-
-      </div>
-
-    </AdminCard>
-
-  ))}
-
-</div>
+        <GameTable games={games} />
 
       </div>
       
