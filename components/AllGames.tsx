@@ -1,4 +1,4 @@
-import Link from "next/link";
+import GameCard from "@/components/GameCard";
 
 import { prisma } from "@/lib/prisma";;
 
@@ -20,23 +20,11 @@ const games = await prisma.game.findMany({
 
         {games.map((game) => (
 
-          <Link
-            key={game.name}
-            href={`/games/${game.slug}`}
-            className="bg-slate-800 hover:bg-slate-700 rounded-2xl p-6 transition"
-          >
-
-            <img
-  src={game.image}
-  alt={game.name}
-  className="w-16 h-16 mx-auto mb-4 object-contain"
+          <GameCard
+  key={game.slug}
+  title={game.name}
+  image={game.image}
 />
-
-            <h3 className="font-bold text-lg">
-              {game.name}
-            </h3>
-
-          </Link>
 
         ))}
 

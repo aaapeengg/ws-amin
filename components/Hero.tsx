@@ -65,12 +65,16 @@ export default function Hero() {
               ⚡ Promo Top Up Terpercaya
             </span>
 
-            <h1 className="
-              text-5xl
-              lg:text-6xl
-              font-extrabold
-              leading-tight
-            ">
+            <h1
+  className="
+    font-space
+    text-5xl
+    lg:text-6xl
+    font-extrabold
+    tracking-tight
+    leading-tight
+  "
+>
               Top Up Game
               <br />
               Lebih Cepat,

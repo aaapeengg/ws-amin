@@ -1,15 +1,16 @@
 :root{
-  --background:#0A0F1E;
-  --surface:#111827;
-  --surface-2:#1A2333;
+  --background:#081221;
 
-  --primary:#00C2FF;
-  --primary-hover:#00A8E8;
+  --card:#111827;
+  --card2:#1A2438;
+
+  --primary:#00D9FF;
+  --primary-hover:#00B8D4;
 
   --text:#F8FAFC;
   --muted:#94A3B8;
 
-  --border:#233047;
+  --border:#22314B;
 
   --success:#22C55E;
   --danger:#EF4444;
@@ -17,11 +18,6 @@
 }
 
 @import "tailwindcss";
-
-:root {
-  --background: #020617;
-  --foreground: #ffffff;
-}
 
 body{
   background:var(--background);
@@ -49,4 +45,8 @@ body{
 
 ::-webkit-scrollbar-thumb:hover{
   background:#00A8E8;
+}
+
+.font-space{
+  font-family: var(--font-space), sans-serif;
 }

@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import GameCard from "@/components/GameCard";
 import { prisma } from "@/lib/prisma";
 
 
@@ -45,69 +44,11 @@ const games = await prisma.game.findMany({
         {games.map((game)=>(
 
 
-          <Link
-
-            key={game.slug}
-
-            href={`/games/${game.slug}`}
-
-            className="
-              bg-slate-800
-              rounded-2xl
-              overflow-hidden
-              hover:scale-105
-              transition
-            "
-
-          >
-
-
-            <div className="
-              relative
-              h-40
-            ">
-
-              <Image
-
-                src={game.image}
-
-                alt={game.name}
-
-                fill
-
-                className="
-                  object-cover
-                "
-
-              />
-
-            </div>
-
-
-
-            <div className="p-4">
-
-              <h3 className="
-                font-bold
-                text-lg
-              ">
-                {game.name}
-              </h3>
-
-
-              <p className="
-                text-gray-400
-                text-sm
-              ">
-                Top Up Sekarang
-              </p>
-
-
-            </div>
-
-
-
-          </Link>
+          <GameCard
+  key={game.slug}
+  title={game.name}
+  image={game.image}
+/>
 
 
         ))}
