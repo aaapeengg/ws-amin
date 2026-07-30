@@ -62,16 +62,38 @@ export default function EditGameForm({
     <div className="bg-slate-800 rounded-2xl p-6 space-y-4">
 
       <input
-        value={name}
-        onChange={(e)=>setName(e.target.value)}
-        className="w-full bg-slate-700 rounded-xl p-3"
-      />
+  value={name}
+  onChange={(e) => {
+
+    const value = e.target.value;
+
+    setName(value);
+
+    setSlug(
+
+      value
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/[^\w-]+/g, "")
+
+    );
+
+  }}
+  className="w-full bg-slate-700 rounded-xl p-3"
+/>
 
       <input
-        value={slug}
-        onChange={(e)=>setSlug(e.target.value)}
-        className="w-full bg-slate-700 rounded-xl p-3"
-      />
+  value={slug}
+  readOnly
+  className="
+    w-full
+    bg-slate-900
+    rounded-xl
+    p-3
+    text-gray-400
+  "
+/>
 
       <input
         value={image}

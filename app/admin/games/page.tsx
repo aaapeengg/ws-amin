@@ -1,3 +1,4 @@
+import DeleteGameButton from "@/components/admin/DeleteGameButton";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
@@ -60,11 +61,7 @@ export default async function AdminGames() {
                   Edit
                 </Link>
 
-                <button
-                  className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-xl"
-                >
-                  Hapus
-                </button>
+                <DeleteGameButton id={game.id} />
 
               </div>
 

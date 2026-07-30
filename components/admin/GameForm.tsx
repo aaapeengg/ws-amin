@@ -48,18 +48,32 @@ export default function GameForm() {
     <div className="bg-slate-800 rounded-2xl p-6 space-y-4">
 
       <input
-        placeholder="Nama Game"
-        value={name}
-        onChange={(e)=>setName(e.target.value)}
-        className="w-full bg-slate-700 rounded-xl p-3"
-      />
+  placeholder="Nama Game"
+  value={name}
+  onChange={(e) => {
+
+    const value = e.target.value;
+
+    setName(value);
+
+    setSlug(
+      value
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/[^\w-]+/g, "")
+    );
+
+  }}
+  className="w-full bg-slate-700 rounded-xl p-3"
+/>
 
       <input
-        placeholder="Slug"
-        value={slug}
-        onChange={(e)=>setSlug(e.target.value)}
-        className="w-full bg-slate-700 rounded-xl p-3"
-      />
+  placeholder="Slug Otomatis"
+  value={slug}
+  readOnly
+  className="w-full bg-slate-900 rounded-xl p-3 text-gray-400 cursor-not-allowed"
+/>
 
       <input
         placeholder="/games/ml.jpg"
