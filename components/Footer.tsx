@@ -25,7 +25,7 @@ export default function Footer() {
             text-xl
             font-bold
           ">
-            🎮 WS AMIN STORE
+            🎮 SV STORE
           </h2>
 
 
@@ -97,7 +97,7 @@ export default function Footer() {
         pb-6
       ">
 
-        © 2026 WS AMIN STORE
+        © 2026 SV STORE
 
       </div>
 

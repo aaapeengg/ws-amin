@@ -1,8 +1,18 @@
 import LayoutContent from "../components/LayoutContent";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import {
+  Geist,
+  Geist_Mono,
+  Space_Grotesk,
+} from "next/font/google";
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +25,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WS AMIN STORE",
+  title: "SV STORE",
   description: "Top Up Game Murah, Cepat & Aman",
 };
 
@@ -26,9 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="id"
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
+  lang="id"
+  className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
+>
       <body className="min-h-screen bg-slate-950 text-white flex flex-col">
 
   <LayoutContent>

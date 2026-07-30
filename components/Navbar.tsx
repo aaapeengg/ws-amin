@@ -1,15 +1,26 @@
 import Link from "next/link";
 
+import {
+  Search,
+  User,
+  Gift,
+  History,
+  House,
+  Gamepad2,
+} from "lucide-react";
+
 export default function Navbar() {
   return (
     <nav className="
       sticky
       top-0
       z-50
-      bg-slate-950/80
-      backdrop-blur
+      bg-[#0A0F1E]/80
+      backdrop-blur-xl
       border-b
-      border-slate-800
+      border-[#233047]
+      shadow-lg
+      shadow-cyan-500/5
     ">
 
       <div className="
@@ -28,43 +39,60 @@ export default function Navbar() {
         <Link
           href="/"
           className="
-            flex
-            items-center
-            gap-3
-          "
+flex
+items-center
+gap-3
+transition-transform
+duration-300
+hover:scale-105
+"
         >
 
-          <div className="
-            w-10
-            h-10
-            rounded-xl
-            bg-blue-600
-            flex
-            items-center
-            justify-center
-            text-xl
-          ">
-            🎮
-          </div>
+          <div
+  className="
+    w-11
+    h-11
+    rounded-2xl
+    bg-gradient-to-br
+    from-cyan-500
+    to-sky-400
+    flex
+    items-center
+    justify-center
+    shadow-lg
+    shadow-blue-500/30
+  "
+>
+  <Gamepad2
+    size={22}
+    className="text-white"
+  />
+</div>
 
 
           <div>
 
-            <h1 className="
-              text-xl
-              font-bold
-              text-white
-            ">
-              WS AMIN STORE
-            </h1>
+            <h1
+  className="
+    text-xl
+    font-extrabold
+    tracking-wide
+    text-white
+  "
+>
+  SV STORE
+</h1>
 
 
-            <p className="
-              text-xs
-              text-gray-400
-            ">
-              Top Up Game
-            </p>
+            <p
+  className="
+    text-xs
+    text-slate-400
+    tracking-wide
+  "
+>
+  Fast • Secure • Trusted
+</p>
 
 
           </div>
@@ -86,27 +114,54 @@ export default function Navbar() {
 
 
           <Link
-            href="/"
-            className="hover:text-blue-400"
-          >
-            Home
-          </Link>
+  href="/"
+  className="
+  flex
+  items-center
+  gap-2
+  text-slate-300
+  hover:text-cyan-400
+  transition-all
+  duration-300
+"
+>
+  <House size={18} />
+  Home
+</Link>
 
 
           <Link
-            href="/#games"
-            className="hover:text-blue-400"
-          >
-            Game
-          </Link>
+  href="/#games"
+  className="
+  flex
+  items-center
+  gap-2
+  text-slate-300
+  hover:text-cyan-400
+  transition-all
+  duration-300
+"
+>
+  <Gamepad2 size={18} />
+  Game
+</Link>
 
 
           <Link
-            href="/history"
-            className="hover:text-blue-400"
-          >
-            Riwayat
-          </Link>
+  href="/history"
+  className="
+  flex
+  items-center
+  gap-2
+  text-slate-300
+  hover:text-cyan-400
+  transition-all
+  duration-300
+"
+>
+  <History size={18} />
+  Cek Transaksi
+</Link>
 
 
         </div>
@@ -114,20 +169,67 @@ export default function Navbar() {
 
 
 
+{/* SEARCH */}
+
+<div
+  className="
+    hidden
+    lg:flex
+    items-center
+    bg-[#111827]
+    border
+    border-[#233047]
+    rounded-xl
+    px-4
+    py-2
+    w-72
+  "
+>
+
+  <Search
+    size={18}
+    className="text-gray-400"
+  />
+
+  <input
+    type="text"
+    placeholder="Cari game..."
+    className="
+      ml-3
+      bg-transparent
+      outline-none
+      text-sm
+      w-full
+      placeholder:text-slate-500
+    "
+  />
+
+</div>
+
         {/* LOGIN */}
 
         <button
-          className="
-            bg-blue-600
-            hover:bg-blue-700
-            px-5
-            py-2
-            rounded-xl
-            font-bold
-          "
-        >
-          Login
-        </button>
+  className="
+flex
+items-center
+gap-2
+bg-cyan-500
+hover:bg-cyan-400
+text-slate-950
+font-bold
+px-5
+py-2.5
+rounded-xl
+transition-all
+duration-300
+hover:scale-105
+shadow-lg
+shadow-cyan-500/30
+"
+>
+  <User size={18} />
+  Login
+</button>
 
 
 

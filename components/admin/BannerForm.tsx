@@ -4,12 +4,16 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import ImageUpload from "@/components/admin/ImageUpload";
 
-export default function BannerForm() {
+export default function BannerForm({
+  banner,
+}: {
+  banner?: any;
+}) {
 
   const router = useRouter();
 
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
+const [title, setTitle] = useState(banner?.title ?? "");
+const [image, setImage] = useState(banner?.image ?? "");
 
   async function handleSubmit() {
 
@@ -18,20 +22,27 @@ export default function BannerForm() {
       return;
     }
 
-    const res = await fetch("/api/admin/banner", {
+    const res = await fetch(
 
-      method: "POST",
+  banner
+    ? `/api/admin/banner/${banner.id}`
+    : "/api/admin/banner",
 
-      headers: {
-        "Content-Type": "application/json",
-      },
+  {
+    method: banner ? "PUT" : "POST",
 
-      body: JSON.stringify({
-        title,
-        image,
-      }),
+    headers: {
+      "Content-Type": "application/json",
+    },
 
-    });
+    body: JSON.stringify({
+      title,
+      image,
+      isActive: banner?.isActive ?? true,
+    }),
+  }
+
+);
 
     if (res.ok) {
 
@@ -49,9 +60,8 @@ export default function BannerForm() {
     <div className="bg-slate-800 rounded-2xl p-6 mb-8">
 
       <h2 className="text-2xl font-bold mb-6">
-        Tambah Banner
-      </h2>
-
+  {banner ? "Edit Banner" : "Tambah Banner"}
+</h2>
       <input
         placeholder="Judul Banner"
         value={title}
@@ -68,7 +78,7 @@ export default function BannerForm() {
         onClick={handleSubmit}
         className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl font-bold"
       >
-        Tambah Banner
+        {banner ? "Update Banner" : "Tambah Banner"}
       </button>
 
     </div>
