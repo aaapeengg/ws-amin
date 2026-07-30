@@ -57,14 +57,6 @@ export default async function AdminOrders({
 
   return (
 
-    <main className="
-      min-h-screen
-      bg-slate-950
-      text-white
-      p-8
-    ">
-
-
       <div className="
         max-w-5xl
         mx-auto
@@ -275,9 +267,6 @@ export default async function AdminOrders({
 
 
       </div>
-
-
-    </main>
 
   );
 

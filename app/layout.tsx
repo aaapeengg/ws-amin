@@ -1,10 +1,8 @@
+import LayoutContent from "../components/LayoutContent";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
 import Script from "next/script";
-
-import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,14 +31,12 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-slate-950 text-white flex flex-col">
 
-  <Navbar />
+  <LayoutContent>
 
-  <main className="flex-1">
     {children}
-  </main>
 
-  <Footer />
-
+    </LayoutContent>
+  
 <Script
   src="https://app.sandbox.midtrans.com/snap/snap.js"
   data-client-key={process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY}

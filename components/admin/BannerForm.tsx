@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ImageUpload from "@/components/admin/ImageUpload";
 
 export default function BannerForm() {
 
@@ -58,12 +59,10 @@ export default function BannerForm() {
         className="w-full bg-slate-700 rounded-xl p-3 mb-4"
       />
 
-      <input
-        placeholder="/banner/ml.jpg"
-        value={image}
-        onChange={(e)=>setImage(e.target.value)}
-        className="w-full bg-slate-700 rounded-xl p-3 mb-6"
-      />
+      <ImageUpload
+  value={image}
+  onChange={setImage}
+/>
 
       <button
         onClick={handleSubmit}

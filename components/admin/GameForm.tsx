@@ -1,5 +1,6 @@
 "use client";
 
+import ImageUpload from "./ImageUpload";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -75,12 +76,10 @@ export default function GameForm() {
   className="w-full bg-slate-900 rounded-xl p-3 text-gray-400 cursor-not-allowed"
 />
 
-      <input
-        placeholder="/games/ml.jpg"
-        value={image}
-        onChange={(e)=>setImage(e.target.value)}
-        className="w-full bg-slate-700 rounded-xl p-3"
-      />
+      <ImageUpload
+  value={image}
+  onChange={setImage}
+/>
 
       <input
         placeholder="Diamond"
