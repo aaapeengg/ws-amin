@@ -39,7 +39,7 @@ export default function AdminSidebar() {
 
       <h1 className="text-2xl font-bold mb-10">
 
-        WS AMIN
+        SV STORE
 
       </h1>
 
