@@ -1,17 +1,45 @@
+import Link from "next/link";
+import CheckoutClient from "./CheckoutClient";
+
 export default async function Checkout({
   searchParams,
 }: {
   searchParams: Promise<{
-    game?: string;
-    item?: string;
-    price?: string;
-    user?: string;
-    extra?: string;
-    product?: string;
-  }>;
+  game?: string;
+  item?: string;
+  price?: string;
+  user?: string;
+  extra?: string;
+  product?: string;
+  payment?: string;
+}>;
 }) {
 
   const params = await searchParams;
+
+  if (
+  !params.game ||
+  !params.item ||
+  !params.price
+) {
+  return (
+    <main className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
+
+      <div className="text-center">
+
+        <h1 className="text-3xl font-bold">
+          Data Checkout Tidak Valid
+        </h1>
+
+        <p className="text-slate-400 mt-3">
+          Silakan ulangi proses top up.
+        </p>
+
+      </div>
+
+    </main>
+  );
+}
 
   return (
     <main className="min-h-screen bg-slate-950 text-white py-10 px-4">
@@ -71,15 +99,24 @@ export default async function Checkout({
             )}
 
             <div className="flex justify-between border-b border-slate-700 pb-3">
-              <span className="text-gray-400">
-                Nominal
-              </span>
+  <span className="text-gray-400">
+    Nominal
+  </span>
 
-              <span className="font-bold">
-                💎 {params.item}
-              </span>
-            </div>
+  <span className="font-bold">
+    💎 {params.item}
+  </span>
+</div>
 
+<div className="flex justify-between border-b border-slate-700 pb-3">
+  <span className="text-gray-400">
+    Pembayaran
+  </span>
+
+  <span className="font-bold">
+    {params.payment}
+  </span>
+</div>
             <div className="flex justify-between">
 
               <span className="text-gray-400">
@@ -124,36 +161,16 @@ export default async function Checkout({
 
         </div>
 
-        <a
-          href={
- `/payment?game=${params.game}` +
- `&item=${params.item}` +
- `&price=${params.price}` +
- `&user=${params.user}` +
- `&extra=${params.extra}` +
- `&product=${params.product}`
-}
-          className="
-            block
-            mt-8
-            w-full
-            text-center
-            bg-gradient-to-r
-            from-blue-500
-            to-blue-700
-            hover:from-blue-600
-            hover:to-blue-800
-            py-4
-            rounded-2xl
-            font-bold
-            text-lg
-            transition-all
-            duration-300
-          "
-        >
-          Lanjut ke Pembayaran →
-        </a>
-
+        <CheckoutClient
+  game={params.game}
+  item={params.item}
+  price={params.price}
+  user={params.user}
+  extra={params.extra}
+  product={params.product}
+  payment={params.payment}
+/>
+        
       </div>
 
     </main>

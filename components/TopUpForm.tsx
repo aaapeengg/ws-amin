@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { payments } from "@/data/payments";
 
 export default function TopUpForm({ game }: any) {
 
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [selectedPayment, setSelectedPayment] = useState("");
 
 const [userId, setUserId] = useState("");
 const [extraId, setExtraId] = useState("");
@@ -16,6 +18,7 @@ const [checked, setChecked] = useState(false);
 
   const canContinue =
   selectedItem &&
+  selectedPayment &&
   userId &&
   (
     game.inputType === "user" ||
@@ -378,6 +381,54 @@ useEffect(() => {
 
       </div>
 
+      <div className="bg-slate-800 rounded-3xl p-6">
+
+  <h2 className="text-2xl font-bold mb-6">
+    Pilih Metode Pembayaran
+  </h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    {payments.map((payment) => (
+
+      <button
+        key={payment.id}
+        onClick={() => setSelectedPayment(payment.id)}
+        className={`
+          flex
+          items-center
+          justify-between
+          rounded-2xl
+          border
+          p-4
+          transition
+
+          ${
+            selectedPayment === payment.id
+              ? "border-cyan-500 bg-cyan-500/10"
+              : "border-slate-700 hover:border-slate-500"
+          }
+        `}
+      >
+
+        <span className="font-semibold">
+          {payment.name}
+        </span>
+
+        {selectedPayment === payment.id && (
+          <span className="text-cyan-400 font-bold">
+            ✓
+          </span>
+        )}
+
+      </button>
+
+    ))}
+
+  </div>
+
+</div>
+
 
 
 
@@ -443,14 +494,18 @@ useEffect(() => {
 
         onClick={() => {
 
-  window.location.href =
-    `/checkout?game=${game.name}` +
-    `&item=${selectedItem.amount}` +
-    `&price=${selectedItem.price}` +
-    `&user=${userId}` +
-    `&extra=${extraId}` +
-    `&product=${selectedItem.productCode}`;
+const url =
+  `/checkout?game=${game.name}` +
+  `&item=${selectedItem.amount}` +
+  `&price=${selectedItem.price}` +
+  `&user=${userId}` +
+  `&extra=${extraId}` +
+  `&product=${selectedItem.productCode}` +
+  `&payment=${selectedPayment}`;
 
+console.log(url);
+
+window.location.href = url;
 }}
 
         className="

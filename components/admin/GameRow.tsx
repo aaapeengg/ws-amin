@@ -5,6 +5,8 @@ import Link from "next/link";
 
 import AdminCard from "./ui/AdminCard";
 import DeleteGameButton from "./DeleteGameButton";
+import StatusBadge from "./StatusBadge";
+import StatusSelect from "./StatusSelect";
 
 type Props = {
   game: {
@@ -12,6 +14,7 @@ type Props = {
     name: string;
     slug: string;
     image: string;
+    status: "ACTIVE" | "MAINTENANCE" | "COMING_SOON";
   };
 };
 
@@ -44,6 +47,16 @@ export default function GameRow({
               {game.slug}
             </p>
 
+<div className="flex items-center gap-3">
+
+  <StatusBadge status={game.status} />
+
+  <StatusSelect
+    id={game.id}
+    status={game.status}
+  />
+
+</div>
           </div>
 
         </div>

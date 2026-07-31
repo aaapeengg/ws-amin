@@ -67,46 +67,6 @@ export default async function AdminGames() {
 
 </div>
 
-<div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-
-  <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6">
-
-    <p className="text-[var(--muted)]">
-      Total Game
-    </p>
-
-    <h2 className="font-space text-4xl font-bold mt-2 text-[var(--primary)]">
-      {games.length}
-    </h2>
-
-  </div>
-
-  <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6">
-
-    <p className="text-[var(--muted)]">
-      Status
-    </p>
-
-    <h2 className="font-space text-2xl font-bold mt-2">
-      Semua Aktif
-    </h2>
-
-  </div>
-
-  <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6">
-
-    <p className="text-[var(--muted)]">
-      Terakhir Update
-    </p>
-
-    <h2 className="font-space text-2xl font-bold mt-2">
-      Hari Ini
-    </h2>
-
-  </div>
-
-</div>
-
         <GameTable games={games} />
 
       </div>

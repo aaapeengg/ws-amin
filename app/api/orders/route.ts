@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
       data: {
 
-        orderId: body.orderId,
+        orderId: "ORD-" + Date.now(),
 
         game: body.game,
 

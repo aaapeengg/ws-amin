@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import TopUpForm from "@/components/TopUpForm";
+import Link from "next/link";
+import { Link2Icon } from "lucide-react";
 
 
 export default async function GameDetail({
@@ -39,6 +41,58 @@ export default async function GameDetail({
       </main>
     );
   }
+
+  if (game.status !== "ACTIVE") {
+  return (
+    <main className="min-h-screen bg-slate-950 flex items-center justify-center px-6">
+
+      <div
+        className="
+          max-w-lg
+          w-full
+          rounded-3xl
+          border
+          border-slate-700
+          bg-slate-900
+          p-10
+          text-center
+        "
+      >
+
+        <div className="text-7xl mb-6">
+          🚧
+        </div>
+
+        <h1 className="text-4xl font-bold text-white">
+          Game Sedang Tidak Tersedia
+        </h1>
+
+        <p className="text-slate-400 mt-4">
+          Saat ini game ini sedang maintenance atau belum tersedia.
+        </p>
+
+        <Link
+          href="/"
+          className="
+            inline-block
+            mt-8
+            rounded-2xl
+            bg-cyan-500
+            hover:bg-cyan-400
+            px-8
+            py-4
+            font-bold
+            text-slate-950
+            transition
+          "
+        >
+          Kembali ke Beranda
+        </Link>
+      </div>
+
+    </main>
+  );
+}
 
 
 

@@ -1,4 +1,5 @@
 import HeroSlider from "@/components/HeroSlider";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -96,20 +97,28 @@ export default function Hero() {
 
             <div className="flex gap-4 mt-8">
 
-              <button className="
-                bg-cyan-500
-                hover:bg-cyan-400
-                text-slate-950
-                px-7
-                py-3
-                rounded-xl
-                font-bold
-                transition-all
-                duration-300
-                hover:scale-105
-              ">
-                Top Up Sekarang
-              </button>
+              <Link
+  href="/#games"
+  className="
+    inline-flex
+    items-center
+    justify-center
+    bg-cyan-500
+    hover:bg-cyan-400
+    text-slate-950
+    font-bold
+    px-8
+    py-4
+    rounded-2xl
+    transition-all
+    duration-300
+    hover:scale-105
+    shadow-lg
+    shadow-cyan-500/30
+  "
+>
+  Top Up Sekarang
+</Link>
 
               <button className="
                 border

@@ -1,14 +1,11 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function PaymentClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
-
-  const [method, setMethod] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const game = searchParams.get("game");
   const item = searchParams.get("item");
@@ -16,8 +13,12 @@ export default function PaymentClient() {
   const user = searchParams.get("user");
   const extra = searchParams.get("extra");
   const product = searchParams.get("product");
+  const payment = searchParams.get("payment");
 
-  const orderId = "WS-" + Date.now();
+  const [method, setMethod] = useState(payment || "");
+  const [loading, setLoading] = useState(false);
+
+  const orderId = "SV-" + Date.now();
 
   async function handlePayment() {
     // ==========================
@@ -75,15 +76,15 @@ export default function PaymentClient() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          orderId,
-          game,
-          userId: user,
-          extraId: extra,
-          item,
-          price,
-          payment: method,
-          productCode: product,
-        }),
+  orderId,
+  game,
+  userId: user,
+  extraId: extra,
+  item,
+  price,
+  payment: method,
+  productCode: product,
+})
       });
 
       const order = await res.json();
@@ -104,9 +105,9 @@ const payment = await fetch("/api/payment", {
     "Content-Type": "application/json",
   },
   body: JSON.stringify({
-    orderId,
-    price: Number(price),
-  }),
+  orderId: order.orderId,
+  price: Number(price),
+})
 });
 
 const snap = await payment.json();
@@ -162,10 +163,15 @@ window.snap.pay(snap.token, {
         font-bold
         mb-8
       ">
-        Pembayaran
+        Konfirmasi Pembayaran
       </h1>
 
-
+<p className="text-slate-400 mt-2">
+Metode pembayaran yang dipilih:
+<span className="font-semibold text-cyan-400">
+{" "}{payment}
+</span>
+</p>
 
       <div className="
         bg-slate-800
@@ -257,189 +263,24 @@ window.snap.pay(snap.token, {
 
         </div>
 
-
-
-
-
-        <h2 className="
-          text-xl
-          font-bold
-          mb-4
-        ">
-          Pilih Metode Pembayaran
-        </h2>
-
-
-
-
-
-        <div className="
-          grid
-          gap-4
-        ">
-
-
-          {[
-            {
-              name:"QRIS",
-              icon:"📱",
-              desc:"Scan QR untuk membayar"
-            },
-
-            {
-              name:"Dana",
-              icon:"💙",
-              desc:"Pembayaran melalui Dana"
-            },
-
-            {
-              name:"Bank Transfer",
-              icon:"🏦",
-              desc:"Transfer manual"
-            }
-
-          ].map((payment)=>(
-
-
-            <button
-
-              key={payment.name}
-
-              onClick={()=>
-                setMethod(payment.name)
-              }
-
-              className={`
-                flex
-                items-center
-                gap-4
-                p-5
-                rounded-2xl
-                transition
-                text-left
-
-                ${
-                  method === payment.name
-                  ?
-                  "bg-blue-600"
-                  :
-                  "bg-slate-700 hover:bg-slate-600"
-                }
-
-              `}
-
-            >
-
-              <div className="
-                text-3xl
-              ">
-                {payment.icon}
-              </div>
-
-
-              <div>
-
-                <p className="font-bold">
-                  {payment.name}
-                </p>
-
-
-                <p className="
-                  text-sm
-                  text-gray-300
-                ">
-                  {payment.desc}
-                </p>
-
-              </div>
-
-
-            </button>
-
-
-          ))}
-
-
-        </div>
-
-
-
-
-
-        {method && (
-
-          <div className="
-            mt-6
-            bg-slate-700
-            rounded-2xl
-            p-5
-          ">
-
-
-            <h3 className="font-bold mb-2">
-              Instruksi Pembayaran
-            </h3>
-
-
-            {method === "QRIS" && (
-              <p>
-                Scan QRIS yang tersedia lalu lakukan pembayaran.
-              </p>
-            )}
-
-
-            {method === "Dana" && (
-              <p>
-                Kirim pembayaran ke nomor Dana toko.
-              </p>
-            )}
-
-
-            {method === "Bank Transfer" && (
-              <p>
-                Transfer ke rekening toko kemudian upload bukti pembayaran.
-              </p>
-            )}
-
-
-          </div>
-
-        )}
-
-
-
-
-
-
-        <button
-
-          onClick={handlePayment}
-
-          disabled={loading}
-
-          className="
-            w-full
-            mt-8
-            bg-green-600
-            hover:bg-green-700
-            disabled:bg-gray-600
-            py-4
-            rounded-2xl
-            font-bold
-            text-lg
-          "
-
-        >
-
-          {loading
-            ? "Memproses..."
-            : "Bayar Sekarang"
-          }
-
-
-        </button>
-
-
+<button
+  onClick={handlePayment}
+  disabled={loading}
+  className="
+    w-full
+    mt-6
+    bg-green-600
+    hover:bg-green-700
+    disabled:bg-gray-600
+    py-4
+    rounded-2xl
+    font-bold
+    text-lg
+    transition
+  "
+>
+  {loading ? "Memproses..." : "Bayar Sekarang"}
+</button>
 
       </div>
 

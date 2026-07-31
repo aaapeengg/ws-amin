@@ -8,8 +8,15 @@ const games = await prisma.game.findMany({
   orderBy: {
     name: "asc",
   },
-});
 
+  select: {
+    id: true,
+    name: true,
+    slug: true,
+    image: true,
+    status: true,
+  },
+});
   return (
 
     <section
@@ -48,8 +55,9 @@ const games = await prisma.game.findMany({
   key={game.slug}
   title={game.name}
   image={game.image}
+  slug={game.slug}
+  status={game.status}
 />
-
 
         ))}
 
