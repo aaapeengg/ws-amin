@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   House,
   Gamepad2,
-  Flame,
   History,
   Search,
   User,
@@ -51,14 +50,6 @@ export default function NavbarDesktop({
         >
           <Gamepad2 size={18} />
           Game
-        </Link>
-
-        <Link
-          href="/#promo"
-          className="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition"
-        >
-          <Flame size={18} />
-          Promo
         </Link>
 
         <Link

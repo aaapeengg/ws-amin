@@ -5,11 +5,11 @@ import {
   Search,
   House,
   Gamepad2,
-  Flame,
   History,
   LogIn,
   UserPlus,
 } from "lucide-react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Sheet,
@@ -29,10 +29,15 @@ export default function MobileTopBar({
 
 const router = useRouter();
 
+const [open, setOpen] = useState(false);
+
   return (
     <div className="lg:hidden">
 
-      <Sheet>
+      <Sheet
+  open={open}
+  onOpenChange={setOpen}
+>
 
         <div className="flex items-center gap-2">
 
@@ -152,8 +157,11 @@ const router = useRouter();
 
             <div className="flex-1 overflow-y-auto p-5 space-y-2">
 
-              <Link
-  href="/"
+              <button
+  onClick={() => {
+    router.push("/");
+    setOpen(false);
+  }}
   className="
 flex
 items-center
@@ -180,10 +188,13 @@ hover:translate-x-1
   />
 
   Home
-</Link>
+</button>
 
-              <Link
-  href="/"
+              <button
+  onClick={() => {
+  router.push("/#games");
+  setOpen(false);
+}}
   className="
 flex
 items-center
@@ -210,40 +221,13 @@ hover:translate-x-1
   />
 
   Game
-</Link>
+</button>
 
-              <Link
-  href="/"
-  className="
-flex
-items-center
-gap-3
-
-rounded-xl
-
-border
-border-transparent
-
-p-4
-
-transition-all
-duration-300
-
-hover:border-cyan-500/30
-hover:bg-slate-800
-hover:translate-x-1
-"
->
-  <Flame
-    size={20}
-    className="text-cyan-400"
-  />
-
-  Promo
-</Link>
-
-              <Link
-  href="/"
+              <button
+  onClick={() => {
+    router.push("/history");
+    setOpen(false);
+  }}
   className="
 flex
 items-center
@@ -270,14 +254,17 @@ hover:translate-x-1
   />
 
   Riwayat
-</Link>
+</button>
 
             </div>
 
             <div className="border-t border-slate-800 p-5 space-y-3">
 
               <button
-  onClick={() => router.push("/login")}
+  onClick={() => {
+  router.push("/login");
+  setOpen(false);
+}}
   className="
     w-full
     rounded-xl
@@ -298,7 +285,10 @@ hover:translate-x-1
 </button>
 
               <button
-  onClick={() => router.push("/register")}
+  onClick={() => {
+  router.push("/login");
+  setOpen(false);
+}}
   className="
     w-full
     rounded-xl
