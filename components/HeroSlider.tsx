@@ -38,61 +38,55 @@ export default function HeroSlider() {
   }
 
   return (
-    <div className="relative w-full h-full rounded-3xl overflow-hidden">
+  <div className="relative w-full h-full overflow-hidden rounded-3xl">
 
-      <>
-  <Image
-  key={banners[current].id}
-  src={banners[current].image}
-  alt={banners[current].title}
-  fill
-  className="
-    object-cover
-    transition-opacity
-    duration-700
-  "
-/>
-
-<div
-  className="
-    absolute
-    bottom-5
-    left-1/2
-    -translate-x-1/2
-    flex
-    gap-2
-  "
->
-  {banners.map((_, index) => (
-    <button
-      key={index}
-      onClick={() => setCurrent(index)}
-      className={`
-        h-2
-        rounded-full
+    <Image
+      key={banners[current].id}
+      src={banners[current].image}
+      alt={banners[current].title}
+      fill
+      priority
+      className="
+        object-cover
         transition-all
-        ${
-          current === index
-            ? "bg-cyan-400 w-8"
-            : "bg-white/40 w-2"
-        }
-      `}
+        duration-700
+      "
     />
-  ))}
-</div>
 
-  <div
-    className="
-      absolute
-      inset-0
-      bg-gradient-to-r
-      from-black/50
-      via-transparent
-      to-transparent
-    "
-  />
-</>
+    <div
+      className="
+        absolute
+        inset-0
+        bg-gradient-to-r
+        from-black/40
+        via-transparent
+        to-transparent
+      "
+    />
 
+    <div
+      className="
+        absolute
+        bottom-4
+        left-1/2
+        -translate-x-1/2
+        flex
+        gap-2
+      "
+    >
+      {banners.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => setCurrent(index)}
+          className={`transition-all rounded-full ${
+            current === index
+              ? "w-8 h-2 bg-cyan-400"
+              : "w-2 h-2 bg-white/40"
+          }`}
+        />
+      ))}
     </div>
-  );
+
+  </div>
+);
 }

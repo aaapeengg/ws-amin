@@ -1,22 +1,36 @@
-import Hero from "@/components/Hero";
-import SearchGame from "@/components/SearchGame";
+import HeroSlider from "@/components/HeroSlider";
+import RecommendedGames from "@/components/RecommendedGames";
 import GameSection from "@/components/GameSection";
 import AllGames from "@/components/AllGames";
 import Features from "@/components/Features";
-import PromoSection from "@/components/PromoSection";
-import WhyChoose from "@/components/WhyChoose";
-import Statistics from "@/components/Statistics";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <SearchGame />
+      <section className="max-w-7xl mx-auto px-5 pt-5">
+
+        <div
+          className="
+            relative
+            w-full
+            h-[180px]
+            sm:h-[220px]
+            lg:h-[340px]
+            overflow-hidden
+            rounded-3xl
+          "
+        >
+          <HeroSlider />
+        </div>
+
+      </section>
+
+      <RecommendedGames />
+
       <GameSection />
+
       <AllGames />
-      <PromoSection />
-      <WhyChoose />
-      <Statistics />
+
       <Features />
     </>
   );

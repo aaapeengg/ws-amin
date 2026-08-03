@@ -47,6 +47,7 @@ model Game {
   currency     String
   inputType    String
   nicknameCode String?
+  developer    String @default("")
   status GameStatus @default(ACTIVE)
   createdAt    DateTime   @default(now())
   items        GameItem[]

@@ -30,13 +30,75 @@ const items = [
 
 export default function WhyChoose() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <section
+  className="
+    relative
+    max-w-7xl
+    mx-auto
+    px-6
+    py-20
+  "
+>
+
+<div
+  className="
+    absolute
+    left-1/2
+    top-20
+
+    h-96
+    w-96
+
+    -translate-x-1/2
+
+    rounded-full
+
+    bg-cyan-500/10
+
+    blur-[140px]
+
+    pointer-events-none
+  "
+/>
 
       <div className="text-center mb-14">
 
-        <p className="text-[var(--primary)] font-semibold tracking-widest uppercase">
-          Kenapa Memilih Kami
-        </p>
+        <div
+  className="
+    inline-flex
+    items-center
+    gap-2
+
+    rounded-full
+
+    bg-cyan-500/10
+
+    px-4
+    py-2
+  "
+>
+
+  <ShieldCheck
+    className="
+      h-4
+      w-4
+      text-cyan-400
+    "
+  />
+
+  <span
+    className="
+      text-sm
+      font-semibold
+      tracking-widest
+
+      text-cyan-400
+    "
+  >
+    WHY CHOOSE US
+  </span>
+
+</div>
 
         <h2 className="font-space text-4xl md:text-5xl font-bold mt-3">
           Kenapa SV STORE?
@@ -70,8 +132,8 @@ export default function WhyChoose() {
                 duration-300
                 hover:-translate-y-1.5
                 hover:border-[var(--primary)]
-                hover:shadow-xl
-                hover:shadow-cyan-500/10
+                hover:shadow-2xl
+                hover:shadow-cyan-500/25
               "
             >
 
@@ -87,16 +149,60 @@ export default function WhyChoose() {
                   text-[var(--primary)]
                 "
               >
-                <Icon size={28} />
+                <Icon
+  size={28}
+  className="
+    transition-all
+    duration-300
+
+    group-hover:scale-125
+    group-hover:rotate-6
+  "
+/>
               </div>
 
-              <h3 className="font-space text-2xl font-bold mt-6">
+              <h3
+  className="
+    mt-6
+
+    font-space
+    text-2xl
+    font-bold
+
+    transition-all
+    duration-300
+
+    group-hover:text-cyan-400
+  "
+>
                 {item.title}
               </h3>
 
               <p className="text-[var(--muted)] mt-4 leading-7">
+                
                 {item.desc}
               </p>
+
+<div
+  className="
+    mt-6
+
+    flex
+    items-center
+    gap-2
+
+    text-sm
+    font-semibold
+
+    text-cyan-400
+  "
+>
+
+  <Zap className="h-4 w-4"/>
+
+  Trusted by 50.000+ gamers
+
+</div>
 
             </div>
 

@@ -1,37 +1,68 @@
 export const payments = [
   {
-    id: "qris",
-    name: "QRIS",
-    image: "/payments/qris.png",
+    category: "QRIS",
+    methods: [
+      {
+        id: "qris",
+        name: "QRIS",
+        subtitle: "Scan semua E-Wallet",
+        image: "/payments/qris.png",
+        eta: "±1 Menit",
+      },
+    ],
   },
+
   {
-    id: "bca",
-    name: "BCA Virtual Account",
-    image: "/payments/bca.png",
+    category: "E-Wallet",
+    methods: [
+      {
+        id: "dana",
+        name: "DANA",
+        subtitle: "Pembayaran instan",
+        image: "/payments/dana.png",
+        eta: "Instant",
+      },
+      {
+        id: "gopay",
+        name: "GoPay",
+        subtitle: "Pembayaran instan",
+        image: "/payments/gopay.png",
+        eta: "Instant",
+      },
+      {
+        id: "ovo",
+        name: "OVO",
+        subtitle: "Pembayaran instan",
+        image: "/payments/ovo.png",
+        eta: "Instant",
+      },
+      {
+        id: "shopeepay",
+        name: "ShopeePay",
+        subtitle: "Pembayaran instan",
+        image: "/payments/shopeepay.png",
+        eta: "Instant",
+      },
+    ],
   },
+
   {
-    id: "bri",
-    name: "BRI Virtual Account",
-    image: "/payments/bri.png",
-  },
-  {
-    id: "dana",
-    name: "DANA",
-    image: "/payments/dana.png",
-  },
-  {
-    id: "gopay",
-    name: "GoPay",
-    image: "/payments/gopay.png",
-  },
-  {
-    id: "ovo",
-    name: "OVO",
-    image: "/payments/ovo.png",
-  },
-  {
-    id: "shopeepay",
-    name: "ShopeePay",
-    image: "/payments/shopeepay.png",
+    category: "Virtual Account",
+    methods: [
+      {
+        id: "bca",
+        name: "BCA Virtual Account",
+        subtitle: "Verifikasi otomatis",
+        image: "/payments/bca.png",
+        eta: "±1 Menit",
+      },
+      {
+        id: "bri",
+        name: "BRI Virtual Account",
+        subtitle: "Verifikasi otomatis",
+        image: "/payments/bri.png",
+        eta: "±1 Menit",
+      },
+    ],
   },
 ];

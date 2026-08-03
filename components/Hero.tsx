@@ -1,3 +1,4 @@
+import SearchGame from "@/components/SearchGame";
 import HeroSlider from "@/components/HeroSlider";
 import Link from "next/link";
 
@@ -12,7 +13,8 @@ export default function Hero() {
         bg-[#111827]
         border
         border-[#233047]
-        min-h-[430px]
+        min-h-[340px] 
+        lg:min-h-[430px]
       ">
 
         {/* Background Glow */}
@@ -39,15 +41,17 @@ export default function Hero() {
         " />
 
         <div className="
-          relative
-          z-10
-          grid
-          lg:grid-cols-2
-          items-center
-          gap-12
-          h-full
-          p-10
-        ">
+  relative
+  z-10
+  grid
+  lg:grid-cols-2
+  items-center
+  gap-8
+  lg:gap-12
+  h-full
+  p-6
+  lg:p-10
+">
 
           {/* Kiri */}
           <div>
@@ -120,17 +124,20 @@ export default function Hero() {
   Top Up Sekarang
 </Link>
 
-              <button className="
-                border
-                border-[#233047]
-                px-7
-                py-3
-                rounded-xl
-                hover:border-cyan-400
-                transition-all
-              ">
-                Lihat Promo
-              </button>
+              <Link
+  href="/#promo"
+  className="
+    border
+    border-[#233047]
+    px-7
+    py-3
+    rounded-xl
+    hover:border-cyan-400
+    transition-all
+  "
+>
+  Lihat Promo
+</Link>
 
             </div>
 
@@ -152,6 +159,10 @@ export default function Hero() {
         </div>
 
       </div>
+
+<div className="mt-8">
+  <SearchGame />
+</div>
 
     </section>
   );

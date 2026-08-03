@@ -1,6 +1,7 @@
-import GameCard from "@/components/GameCard";
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-
+import { ArrowRight, Sparkles  } from "lucide-react";
+import PopularGameCard from "@/components/PopularGameCard";
 
 export default async function GameSection() {
 
@@ -14,6 +15,7 @@ const games = await prisma.game.findMany({
     name: true,
     slug: true,
     image: true,
+    developer: true,
     status: true,
   },
 });
@@ -22,41 +24,89 @@ const games = await prisma.game.findMany({
     <section
       id="games"
       className="
-      max-w-7xl
-      mx-auto
-      px-6
-      py-16
-      "
+  max-w-7xl
+  mx-auto
+  px-5
+  py-10
+  lg:py-14
+"
     >
 
 
-      <h2 className="
-        text-4xl
-        font-bold
-        mb-8
-      ">
-        Game Populer
-      </h2>
+      <div
+  className="
+    mb-8
+    flex
+    items-center
+    justify-between
+  "
+>
+
+  <div className="flex items-center gap-2">
+
+  <Sparkles
+    className="text-cyan-400"
+    size={22}
+  />
+
+  <h2
+    className="
+      text-Sxl
+      lg:text-xl
+      font-bold
+    "
+  >
+    Game Populer
+  </h2>
+
+</div>
+
+  <Link
+  href="/games"
+  className="
+    inline-flex
+    items-center
+    gap-1
+
+    text-sm
+    font-semibold
+    text-cyan-400
+
+    transition-all
+    duration-300
+
+    hover:gap-2
+    hover:text-cyan-300
+  "
+>
+  Lihat Semua
+
+  <ArrowRight size={16} />
+</Link>
+
+</div>
 
 
-
-      <div className="
-        grid
-        grid-cols-2
-        md:grid-cols-4
-        gap-6
-      ">
+      <div
+  className="
+    grid
+    grid-cols-2
+    lg:grid-cols-4
+    gap-4
+  "
+>
 
 
         {games.map((game)=>(
 
 
-          <GameCard
+          <PopularGameCard
   key={game.slug}
   title={game.name}
   image={game.image}
   slug={game.slug}
   status={game.status}
+  developer={game.developer}
 />
 
         ))}
