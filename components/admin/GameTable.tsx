@@ -11,6 +11,7 @@ type Game = {
   name: string;
   slug: string;
   image: string;
+  status: "ACTIVE" | "MAINTENANCE" | "COMING_SOON";
 };
 
 type Props = {
