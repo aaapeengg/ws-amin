@@ -1,4 +1,3 @@
-import SearchGame from "@/components/SearchGame";
 import HeroSlider from "@/components/HeroSlider";
 import Link from "next/link";
 
@@ -161,7 +160,6 @@ export default function Hero() {
       </div>
 
 <div className="mt-8">
-  <SearchGame />
 </div>
 
     </section>
